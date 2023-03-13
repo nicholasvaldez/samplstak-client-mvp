@@ -1,0 +1,21 @@
+.samples {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sample {
+  display: flex;
+}
+
+.sample__url {
+  margin-right: 75px;
+}
+
+.sample__instrument {
+  margin-right: 25px;
+}
+
+.button {
+  margin-left: 75px;
+}
