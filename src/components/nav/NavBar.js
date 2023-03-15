@@ -6,8 +6,21 @@ export const NavBar = () => {
   return (
     <ul className="navbar">
       <div className="logo">SamplStak</div>
-      <li className="navbar__item">Browse</li>
-      <li className="navbar__item">My Sounds</li>
+      <li className="navbar__item">
+        <Link className="navbar__link" to="/">
+          Browse
+        </Link>
+      </li>
+      <li className="navbar__item">
+        <Link className="navbar__link" to="/collection">
+          Collection
+        </Link>
+      </li>
+      <li className="navbar__item">
+        <Link className="navbar__link" to="/mysounds">
+          My Sounds
+        </Link>
+      </li>
       {localStorage.getItem("lu_token") !== null ? (
         <li className="nav-item">
           <button

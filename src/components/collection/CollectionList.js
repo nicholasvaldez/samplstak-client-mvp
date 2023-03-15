@@ -1,42 +1,41 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-import { getGenres } from "../../managers/genres/Genres"
+import { getCollectionSamples } from "../../managers/samples/Collection"
+import { SampleCollection } from "./SampleCollection"
+import "./collection.css"
+import { getGenreSamples } from "../../managers/samples/SampleManager"
 import { getInstruments } from "../../managers/instruments/Instruments"
-import {
-  getGenreSamples,
-  getSamples,
-} from "../../managers/samples/SampleManager"
-import { Samples } from "./Samples"
-import "./samples.css"
+import { getGenres } from "../../managers/genres/Genres"
 
-export const SampleList = (props) => {
-  const [samples, setSamples] = useState([])
-  const [filteredSamples, setFilteredSamples] = useState([])
+export const CollectionList = (props) => {
+  const [collectionSamples, setCollectionSamples] = useState([])
+  const [filteredCollectionSamples, setFilteredCollectionSamples] = useState([])
   const [instruments, setInstruments] = useState([])
   const [instId, setInstId] = useState("")
   const [genreId, setGenreId] = useState("")
   const [genres, setGenres] = useState([])
-  const navigate = useNavigate()
 
   useEffect(() => {
-    getSamples().then((data) => setSamples(data))
+    getCollectionSamples().then((data) => setCollectionSamples(data))
   }, [])
 
   useEffect(() => {
     if (genreId !== "") {
-      getGenreSamples(genreId).then((data) => setFilteredSamples(data))
+      getGenreSamples(genreId).then((data) =>
+        setFilteredCollectionSamples(data)
+      )
     } else {
-      getSamples().then((data) => setFilteredSamples(data))
+      getCollectionSamples().then((data) => setFilteredCollectionSamples(data))
     }
   }, [genreId])
 
   useEffect(() => {
     if (instId !== "") {
-      const filteredCopy = samples.filter((s) => s.instrument.id === instId)
-      setFilteredSamples(filteredCopy)
+      const filteredCopy = collectionSamples.filter(
+        (s) => s.instrument.id === instId
+      )
+      setFilteredCollectionSamples(filteredCopy)
     } else {
-      getSamples().then((data) => setFilteredSamples(data))
+      getCollectionSamples().then((data) => setFilteredCollectionSamples(data))
     }
   }, [instId])
 
@@ -58,7 +57,7 @@ export const SampleList = (props) => {
                 const value = evt.target.value
                 if (value === "") {
                   setInstId("")
-                  setFilteredSamples(samples)
+                  setFilteredCollectionSamples(collectionSamples)
                 } else {
                   setInstId(parseInt(value))
                 }
@@ -82,7 +81,7 @@ export const SampleList = (props) => {
                 const value = evt.target.value
                 if (value.length === 0) {
                   setGenreId("")
-                  setFilteredSamples(samples)
+                  setFilteredCollectionSamples(collectionSamples)
                 } else {
                   setGenreId(value)
                 }
@@ -99,14 +98,14 @@ export const SampleList = (props) => {
         </fieldset>
       </div>
       <article className="samples">
-        {filteredSamples.map((s) => (
-          <Samples
-            id={s.id}
-            fileUrl={s.file_url}
-            fileName={s.file_name}
-            producer={s.producer}
-            instrument={s.instrument.label}
-            genre={s.genre.map((g) => g.label).join(", ")}
+        {filteredCollectionSamples.map((s) => (
+          <SampleCollection
+            id={s.sample.id}
+            fileUrl={s.sample.file_url}
+            fileName={s.sample.file_name}
+            producer={s.sample.producer}
+            instrument={s.sample.instrument.label}
+            genre={s.sample.genre.map((g) => g.label).join(", ")}
           />
         ))}
       </article>
