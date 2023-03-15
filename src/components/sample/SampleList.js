@@ -50,6 +50,7 @@ export const SampleList = (props) => {
 
   return (
     <>
+      <h1>Browse.</h1>
       <div className="drops">
         <fieldset className="drops__field">
           <div>

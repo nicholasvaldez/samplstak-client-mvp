@@ -24,3 +24,11 @@ export const getGenreCollectionSamples = (id) => {
     },
   }).then((response) => response.json())
 }
+
+export const getInstrumentCollectionSamples = (id) => {
+  return fetch(`http://localhost:8000/collections?instrument=${id}`, {
+    headers: {
+      Authorization: `Token ${localStorage.getItem("lu_token")}`,
+    },
+  }).then((response) => response.json())
+}

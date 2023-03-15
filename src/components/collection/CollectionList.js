@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { getCollectionSamples } from "../../managers/samples/Collection"
+import {
+  getCollectionSamples,
+  getGenreCollectionSamples,
+  getInstrumentCollectionSamples,
+} from "../../managers/samples/Collection"
 import { SampleCollection } from "./SampleCollection"
-import "./collection.css"
-import { getGenreSamples } from "../../managers/samples/SampleManager"
 import { getInstruments } from "../../managers/instruments/Instruments"
 import { getGenres } from "../../managers/genres/Genres"
+import "./collection.css"
 
 export const CollectionList = (props) => {
   const [collectionSamples, setCollectionSamples] = useState([])
@@ -20,7 +23,7 @@ export const CollectionList = (props) => {
 
   useEffect(() => {
     if (genreId !== "") {
-      getGenreSamples(genreId).then((data) =>
+      getGenreCollectionSamples(genreId).then((data) =>
         setFilteredCollectionSamples(data)
       )
     } else {
@@ -30,10 +33,9 @@ export const CollectionList = (props) => {
 
   useEffect(() => {
     if (instId !== "") {
-      const filteredCopy = collectionSamples.filter(
-        (s) => s.instrument.id === instId
+      getInstrumentCollectionSamples(instId).then((data) =>
+        setFilteredCollectionSamples(data)
       )
-      setFilteredCollectionSamples(filteredCopy)
     } else {
       getCollectionSamples().then((data) => setFilteredCollectionSamples(data))
     }
@@ -49,6 +51,7 @@ export const CollectionList = (props) => {
 
   return (
     <>
+      <h1>Collect.</h1>
       <div className="drops">
         <fieldset className="drops__field">
           <div>
