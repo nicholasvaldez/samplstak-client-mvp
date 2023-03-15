@@ -5,10 +5,9 @@ import {
   getInstrumentCollectionSamples,
 } from "../../managers/samples/Collection"
 import { SampleCollection } from "./SampleCollection"
-import "./collection.css"
-import { getGenreSamples } from "../../managers/samples/SampleManager"
 import { getInstruments } from "../../managers/instruments/Instruments"
 import { getGenres } from "../../managers/genres/Genres"
+import "./collection.css"
 
 export const CollectionList = (props) => {
   const [collectionSamples, setCollectionSamples] = useState([])
@@ -52,6 +51,7 @@ export const CollectionList = (props) => {
 
   return (
     <>
+      <h1>Collect.</h1>
       <div className="drops">
         <fieldset className="drops__field">
           <div>
