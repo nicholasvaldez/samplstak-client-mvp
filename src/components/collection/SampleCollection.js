@@ -1,6 +1,4 @@
-import { addToCollection } from "../../managers/samples/Collection"
-
-export const Samples = ({
+export const SampleCollection = ({
   id,
   fileUrl,
   fileName,
@@ -8,10 +6,6 @@ export const Samples = ({
   instrument,
   genre,
 }) => {
-  const handleAddToCollection = () => {
-    addToCollection({ sample: id })
-  }
-
   return (
     <section key={`sample--${id}`} className="sample">
       <h2 className="sample__play-button">
@@ -23,14 +17,6 @@ export const Samples = ({
 
       <div className="sample__instrument">{instrument}</div>
       <div className="sample__genre">{genre}</div>
-      <button
-        className="button"
-        onClick={() => {
-          handleAddToCollection()
-        }}
-      >
-        +
-      </button>
     </section>
   )
 }
