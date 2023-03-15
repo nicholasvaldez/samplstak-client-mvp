@@ -1,0 +1,8 @@
+.headers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plus {
+  margin-right: 200px;
+}

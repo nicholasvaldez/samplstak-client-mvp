@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react"
-
-import { getSamples } from "../../managers/samples/SampleManager"
 import { MySoundsSamples } from "./MySoundsSamples"
 import "./mysounds.css"
+import {
+  addNewSample,
+  getMySoundsSamples,
+} from "../../managers/samples/MySounds"
+import { Link } from "react-router-dom"
 
 export const MySoundsList = (props) => {
   const [samples, setSamples] = useState([])
 
   useEffect(() => {
-    getSamples().then((data) => setSamples(data))
+    getMySoundsSamples().then((data) => setSamples(data))
   }, [])
 
   return (
     <>
-      <h1>Create.</h1>
+      <div className="headers">
+        <h1>Create.</h1>
+        <a href={"/addsample"}>
+          <h1 className="plus">+</h1>
+        </a>
+      </div>
       <article className="samples">
         {samples.map((s) => (
           <MySoundsSamples
