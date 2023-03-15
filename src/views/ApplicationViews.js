@@ -3,6 +3,7 @@ import { Login } from "../components/auth/Login"
 import { Register } from "../components/auth/Register"
 import { CollectionList } from "../components/collection/CollectionList"
 import { MySoundsList } from "../components/mysounds/MySoundsList"
+import { NewSample } from "../components/mysounds/SampleForm"
 import { SampleList } from "../components/sample/SampleList"
 import { Authorized } from "./Authorized"
 
@@ -17,6 +18,7 @@ export const ApplicationViews = () => {
           <Route path="/" element={<SampleList />} />
           <Route path="collection" element={<CollectionList />} />
           <Route path="mysounds" element={<MySoundsList />} />
+          <Route path="addsample" element={<NewSample />} />
         </Route>
       </Routes>
     </>

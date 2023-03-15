@@ -8,10 +8,6 @@ export const MySoundsSamples = ({
   instrument,
   genre,
 }) => {
-  const handleAddToCollection = () => {
-    addToCollection({ sample: id })
-  }
-
   return (
     <section key={`sample--${id}`} className="sample">
       <h2 className="sample__play-button">
@@ -23,14 +19,8 @@ export const MySoundsSamples = ({
 
       <div className="sample__instrument">{instrument}</div>
       <div className="sample__genre">{genre}</div>
-      <button
-        className="button"
-        onClick={() => {
-          handleAddToCollection()
-        }}
-      >
-        +
-      </button>
+      <button className="button">E</button>
+      <button className="button">X</button>
     </section>
   )
 }
