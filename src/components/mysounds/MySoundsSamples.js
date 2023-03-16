@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom"
 import { addToCollection } from "../../managers/samples/Collection"
+import { deleteSample } from "../../managers/samples/MySounds"
 
 export const MySoundsSamples = ({
   id,
@@ -20,7 +22,16 @@ export const MySoundsSamples = ({
       <div className="sample__instrument">{instrument}</div>
       <div className="sample__genre">{genre}</div>
       <button className="button">E</button>
-      <button className="button">X</button>
+      <button
+        className="button"
+        onClick={() =>
+          deleteSample(id).then(() => {
+            window.location.reload()
+          })
+        }
+      >
+        X
+      </button>
     </section>
   )
 }
