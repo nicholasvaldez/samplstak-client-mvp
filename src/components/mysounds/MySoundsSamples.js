@@ -10,6 +10,8 @@ export const MySoundsSamples = ({
   instrument,
   genre,
 }) => {
+  const navigate = useNavigate()
+
   return (
     <section key={`sample--${id}`} className="sample">
       <h2 className="sample__play-button">
@@ -21,7 +23,14 @@ export const MySoundsSamples = ({
 
       <div className="sample__instrument">{instrument}</div>
       <div className="sample__genre">{genre}</div>
-      <button className="button">E</button>
+      <button
+        className="button"
+        onClick={() => {
+          navigate(`/mysounds/edit/${id}`)
+        }}
+      >
+        E
+      </button>
       <button
         className="button"
         onClick={() =>
