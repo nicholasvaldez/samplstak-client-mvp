@@ -8,15 +8,22 @@ export const NewSample = ({ token }) => {
   const [sample, setSample] = useState({})
   const [instrument, setInstruments] = useState([])
   const [genres, setGenres] = useState([])
+  const [sampGenres, setSampGenres] = useState(new Set())
 
   const navigate = useNavigate()
+
+  const genArr = (genId) => {
+    let copy = new Set(sampGenres)
+    copy.has(genId) ? copy.delete(genId) : copy.add(genId)
+    setSampGenres(copy)
+  }
 
   const [currentSample, setCurrentSample] = useState({
     producer: parseInt(token),
     file_url: "",
     file_name: "",
     instrument: 0,
-    genre: 0,
+    genre: [],
   })
 
   useEffect(() => {

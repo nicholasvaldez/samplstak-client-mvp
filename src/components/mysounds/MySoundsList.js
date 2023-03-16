@@ -18,7 +18,7 @@ export const MySoundsList = (props) => {
     <>
       <div className="headers">
         <h1>Create.</h1>
-        <a href={"/addsample"}>
+        <a href={"/mysounds/new"}>
           <h1 className="plus">+</h1>
         </a>
       </div>
