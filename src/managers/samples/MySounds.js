@@ -16,3 +16,24 @@ export const addNewSample = (Sample) => {
     body: JSON.stringify(Sample),
   })
 }
+
+export const deleteSample = (id) => {
+  return fetch(`http://localhost:8000/samples/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Token ${localStorage.getItem("lu_token")}`,
+    },
+  })
+}
+
+export const updateSample = (id, sample) => {
+  return fetch(`http://localhost:8000/samples/${id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Token ${localStorage.getItem("lu_token")}`,
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(sample),
+  })
+}

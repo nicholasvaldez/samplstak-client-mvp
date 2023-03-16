@@ -19,6 +19,7 @@ export const ApplicationViews = () => {
           <Route path="collection" element={<CollectionList />} />
           <Route path="mysounds" element={<MySoundsList />} />
           <Route path="addsample" element={<NewSample />} />
+          <Route path="editsample" element={<></>} />
         </Route>
       </Routes>
     </>
